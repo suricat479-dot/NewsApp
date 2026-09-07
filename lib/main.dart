@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:news_app/news app/ui/screens/news_screen.dart';
-import 'package:news_app/news app/ui/providers/news_provider.dart';
-import 'package:news_app/news app/core/di/injection.dart';
+import 'news app/core/di/injection.dart';
+import 'news app/ui/providers/news_provider.dart';
+import 'news app/ui/screens/news_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
-  // Инициализация DI граф зависимостей (GetIt + Injectable)
-  configureDependencies();
+  await configureDependencies();
 
   runApp(const MyApp());
 }
@@ -19,27 +18,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'News App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF7F8FA),
-        primarySwatch: Colors.blue,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.black),
-          titleTextStyle: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+    return ChangeNotifierProvider(
+      create: (_) => getIt<NewsProvider>(),
+      child: MaterialApp(
+        title: 'News App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          useMaterial3: true,
+          scaffoldBackgroundColor: const Color(0xFFF5F5F5),
         ),
-      ),
-      home: ChangeNotifierProvider(
-        create: (_) => getIt<NewsProvider>()..fetchNews(),
-        child: const NewsScreen(),
+        home: const NewsScreen(),
       ),
     );
   }
