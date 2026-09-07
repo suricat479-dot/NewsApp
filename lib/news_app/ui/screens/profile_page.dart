@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../core/di/injection.dart';
-import '../../core/router/app_router.gr.dart';
-import '../../../news app/data/datasources/local/secure_storage_service.dart';
-import '../../../news app/data/datasources/local/storage_service.dart';
-
+import 'package:news_app/news_app/core/router/app_router.gr.dart';
+import 'package:news_app/news_app/core/services/secure_storage_service.dart';
+import 'package:news_app/news_app/core/services/storage_service.dart';
 @RoutePage()
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -26,9 +26,14 @@ class ProfilePage extends StatelessWidget {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            const CircleAvatar(
-              radius: 40,
-              child: Icon(Icons.person, size: 50),
+            
+            SizedBox(
+              height: 120,
+              width: 120,
+              child: Lottie.asset(
+                'assets/vending_machine.json',
+                fit: BoxFit.contain,
+              ),
             ),
             const SizedBox(height: 16),
             const Text(

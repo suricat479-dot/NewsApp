@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/di/injection.dart';
-import '../../core/router/app_router.gr.dart';
-import '../../../news app/data/datasources/local/storage_service.dart';
+import 'package:news_app/news_app/core/router/app_router.gr.dart';
+import 'package:news_app/news_app/core/services/secure_storage_service.dart';
+import 'package:news_app/news_app/core/services/storage_service.dart';
 
 @RoutePage()
 class OnboardingScreen extends StatefulWidget {

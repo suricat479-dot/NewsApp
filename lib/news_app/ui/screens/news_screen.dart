@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/router/app_router.gr.dart';
+import 'package:news_app/news_app/core/router/app_router.gr.dart';
 import '../providers/news_provider.dart';
 import '../widgets/news_card.dart';
 
@@ -21,7 +21,7 @@ class _NewsScreenState extends State<NewsScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<NewsProvider>().loadNews();
+      context.read<NewsProvider>().loadMoreSearch();
     });
   }
 
@@ -52,7 +52,7 @@ class _NewsScreenState extends State<NewsScreen> {
                   icon: const Icon(Icons.clear),
                   onPressed: () {
                     _searchController.clear();
-                    context.read<NewsProvider>().loadNews();
+                    context.read<NewsProvider>().loadMoreSearch();
                   },
                 ),
                 border: OutlineInputBorder(
@@ -81,7 +81,7 @@ class _NewsScreenState extends State<NewsScreen> {
                         Text('Ошибка: ${provider.error}'),
                         const SizedBox(height: 12),
                         ElevatedButton(
-                          onPressed: () => provider.loadNews(),
+                          onPressed: () => provider.loadMoreSearch(),
                           child: const Text('Повторить'),
                         ),
                       ],
@@ -94,7 +94,7 @@ class _NewsScreenState extends State<NewsScreen> {
                 }
 
                 return RefreshIndicator(
-                  onRefresh: () => provider.loadNews(),
+                  onRefresh: () => provider.loadMoreSearch(),
                   child: ListView.builder(
                     itemCount: provider.articles.length,
                     itemBuilder: (context, index) {

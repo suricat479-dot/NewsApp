@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/router/app_router.gr.dart';
+import 'package:news_app/news_app/core/router/app_router.gr.dart';
 import '../../domain/entities/article.dart';
 
 class NewsCard extends StatelessWidget {
