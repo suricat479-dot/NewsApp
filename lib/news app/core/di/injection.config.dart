@@ -33,12 +33,12 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final registerModule = _$RegisterModule();
     gh.lazySingleton<_i519.Client>(() => registerModule.client);
-    gh.lazySingleton<_i675.NewsDataSourceImp>(
+    gh.lazySingleton<_i675.NewsDataSourceImpl>(
       () => _i675.NewsDataSourceImpl(client: gh<_i519.Client>()),
     );
     gh.lazySingleton<_i861.NewsRepository>(
       () => _i1056.NewsRepositoryImpl(
-        remoteDataSource: gh<_i675.NewsDataSourceImp>(),
+        NewsDataSourceImpl : gh<_i675.NewsDataSourceImpl>(),
       ),
     );
     gh.factory<_i836.GetTopHeadlines>(
