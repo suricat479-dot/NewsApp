@@ -1,15 +1,13 @@
-// lib/news app/data/data_source/remote/news_data_source_impl.dart
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import '../abstract/news_data_source.dart';
 import '../../models/article_model.dart';
 
 @LazySingleton(as: NewsDataSource)
-class NewsRemoteDataSourceImpl implements NewsDataSource {
+class NewsDataSourceImpl implements NewsDataSource {
   final Dio dio;
 
-  NewsRemoteDataSourceImpl(this.dio);
+  NewsDataSourceImpl(this.dio);
 
   @override
   Future<List<ArticleModel>> getTopHeadlines() async {
