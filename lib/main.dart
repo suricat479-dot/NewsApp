@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:news_app/news app/ui/screens/splash_page.dart';
-import 'package:news_app/news app/ui/providers/news_provider.dart';
-import 'package:news_app/news app/core/di/injection.dart';
+import 'news_app/core/di/injection.dart';
+import 'news_app/core/router/app_router.dart';
+import 'news_app/ui/providers/news_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,9 +16,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Получаем экземпляр роутера из GetIt
+    final appRouter = getIt<AppRouter>();
+
     return ChangeNotifierProvider(
       create: (_) => getIt<NewsProvider>(),
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'News App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           scaffoldBackgroundColor: const Color(0xFFF5F5F5),
         ),
-        home: const SplashPage(),
+        routerConfig: appRouter.config(),
       ),
     );
   }
