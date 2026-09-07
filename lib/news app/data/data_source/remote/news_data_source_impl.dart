@@ -17,8 +17,19 @@ class NewsDataSourceImpl implements NewsDataSource {
   }
 
   @override
-  Future<List<ArticleModel>> searchNews(String query) async {
-    final response = await dio.get('/everything', queryParameters: {'q': query});
+  Future<List<ArticleModel>> searchNews(
+    String query, {
+    int page = 1,
+    int pageSize = 10,
+  }) async {
+    final response = await dio.get(
+      '/everything',
+      queryParameters: {
+        'q': query,
+        'page': page,
+        'pageSize': pageSize,
+      },
+    );
     final List articlesJson = response.data['articles'] ?? [];
     return articlesJson.map((json) => ArticleModel.fromJson(json)).toList();
   }

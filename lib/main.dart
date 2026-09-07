@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'news app/core/di/injection.dart';
-import 'news app/ui/providers/news_provider.dart';
-import 'news app/ui/screens/news_screen.dart';
+import 'package:news_app/news app/ui/screens/splash_page.dart';
+import 'package:news_app/news app/ui/providers/news_provider.dart';
+import 'package:news_app/news app/core/di/injection.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
   await configureDependencies();
-
   runApp(const MyApp());
 }
 
@@ -28,7 +26,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           scaffoldBackgroundColor: const Color(0xFFF5F5F5),
         ),
-        home: const NewsScreen(),
+        home: const SplashPage(),
       ),
     );
   }

@@ -8,8 +8,12 @@ class SearchNews {
 
   SearchNews(this.repository);
 
-  Future<List<Article>> call(String query) async {
+  Future<List<Article>> call(
+    String query, {
+    int page = 1,
+    int pageSize = 10,
+  }) async {
     if (query.trim().isEmpty) return [];
-    return await repository.searchNews(query);
+    return await repository.searchNews(query, page: page, pageSize: pageSize);
   }
 }

@@ -10,19 +10,15 @@ class StorageService {
   static const String _keyIsFirstTime = 'is_first_time';
   static const String _keyIsAuthorized = 'is_authorized';
 
-    bool isFirstTime() {
-    return _prefs.getBool(_keyIsFirstTime) ?? true;
-  }
+  bool isFirstTime() => _prefs.getBool(_keyIsFirstTime) ?? true;
 
-    Future<void> setOnboardingCompleted() async {
+  Future<void> setOnboardingCompleted() async {
     await _prefs.setBool(_keyIsFirstTime, false);
   }
 
-    bool isAuthorized() {
-    return _prefs.getBool(_keyIsAuthorized) ?? false;
-  }
+  bool isAuthorized() => _prefs.getBool(_keyIsAuthorized) ?? false;
 
-    Future<void> setAuthorized(bool value) async {
+  Future<void> setAuthorized(bool value) async {
     await _prefs.setBool(_keyIsAuthorized, value);
   }
 }

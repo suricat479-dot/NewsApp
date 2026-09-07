@@ -5,25 +5,25 @@ class ArticleModel extends Article {
     required String title,
     String? description,
     String? urlToImage,
-    String? publishedAt,
     String? author,
+    String? publishedAt,
     String? content,
   }) : super(
           title: title,
           description: description,
           urlToImage: urlToImage,
-          publishedAt: publishedAt,
           author: author,
+          publishedAt: publishedAt,
           content: content,
         );
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     return ArticleModel(
-      title: json['title'] ?? 'Без заголовка',
+      title: json['title'] ?? '',
       description: json['description'],
       urlToImage: json['urlToImage'],
-      publishedAt: json['publishedAt'],
       author: json['author'],
+      publishedAt: json['publishedAt'],
       content: json['content'],
     );
   }

@@ -17,25 +17,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final List<Map<String, String>> _pages = [
     {
       'title': 'Добро пожаловать в NewsApp',
-      'description':
-          'Читайте самые свежие и актуальные новости со всего мира в удобном формате.',
+      'description': 'Читайте самые свежие и актуальные новости со всего мира в удобном формате.'
     },
     {
       'title': 'Удобный поиск',
-      'description':
-          'Находите интересные статьи и новости по любым ключевым словам в пару кликов.',
+      'description': 'Находите интересные статьи и новости по любым ключевым словам в пару кликов.'
     },
     {
       'title': 'Будьте в курсе событий',
-      'description':
-          'Сохраняйте и отслеживайте главные заголовки дня в реальном времени.',
+      'description': 'Сохраняйте и отслеживайте главные заголовки дня в реальном времени.'
     },
   ];
 
   void _onFinish() async {
     await getIt<StorageService>().setOnboardingCompleted();
     if (!mounted) return;
-
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (_) => const AuthScreen()),
@@ -59,27 +55,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.newspaper_rounded,
-                          size: 100,
-                          color: Theme.of(context).primaryColor,
-                        ),
+                        Icon(Icons.newspaper_rounded, size: 100, color: Theme.of(context).primaryColor),
                         const SizedBox(height: 40),
                         Text(
                           _pages[index]['title']!,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 16),
                         Text(
                           _pages[index]['description']!,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[600],
-                          ),
+                          style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -97,9 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   width: _currentIndex == index ? 12 : 8,
                   height: 8,
                   decoration: BoxDecoration(
-                    color: _currentIndex == index
-                        ? Theme.of(context).primaryColor
-                        : Colors.grey,
+                    color: _currentIndex == index ? Theme.of(context).primaryColor : Colors.grey,
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),
@@ -109,9 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size.fromHeight(50),
-                ),
+                style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50)),
                 onPressed: () {
                   if (_currentIndex == _pages.length - 1) {
                     _onFinish();
@@ -122,9 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     );
                   }
                 },
-                child: Text(
-                  _currentIndex == _pages.length - 1 ? 'Начать' : 'Далее',
-                ),
+                child: Text(_currentIndex == _pages.length - 1 ? 'Начать' : 'Далее'),
               ),
             ),
           ],

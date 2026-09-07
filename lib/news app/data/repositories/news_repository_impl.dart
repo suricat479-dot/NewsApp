@@ -15,7 +15,11 @@ class NewsRepositoryImpl implements NewsRepository {
   }
 
   @override
-  Future<List<Article>> searchNews(String query) async {
-    return await newsDataSource.searchNews(query);
+  Future<List<Article>> searchNews(
+    String query, {
+    int page = 1,
+    int pageSize = 10,
+  }) async {
+    return await newsDataSource.searchNews(query, page: page, pageSize: pageSize);
   }
 }

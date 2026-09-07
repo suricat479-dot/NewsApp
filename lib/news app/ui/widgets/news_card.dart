@@ -13,9 +13,7 @@ class NewsCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (_) => NewsDetailScreen(article: article),
-          ),
+          MaterialPageRoute(builder: (_) => NewsDetailScreen(article: article)),
         );
       },
       child: Container(
@@ -56,11 +54,7 @@ class NewsCard extends StatelessWidget {
                 children: [
                   Text(
                     article.title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      height: 1.3,
-                    ),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, height: 1.3),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

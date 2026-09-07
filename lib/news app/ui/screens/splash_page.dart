@@ -21,7 +21,6 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> _checkNavigation() async {
     await Future.delayed(const Duration(seconds: 1));
-
     final storage = getIt<StorageService>();
     if (!mounted) return;
 
@@ -32,6 +31,7 @@ class _SplashPageState extends State<SplashPage> {
       );
       return;
     }
+
     if (!storage.isAuthorized()) {
       Navigator.pushReplacement(
         context,
@@ -47,6 +47,10 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    return const Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }

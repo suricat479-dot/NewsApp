@@ -33,11 +33,7 @@ class NewsDetailScreen extends StatelessWidget {
                 children: [
                   Text(
                     article.title,
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      height: 1.3,
-                    ),
+                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, height: 1.3),
                   ),
                   const SizedBox(height: 12),
                   Row(
@@ -73,11 +69,7 @@ class NewsDetailScreen extends StatelessWidget {
                   ],
                   Text(
                     article.content ?? 'Полное содержание статьи отсутствует.',
-                    style: const TextStyle(
-                      fontSize: 15,
-                      color: Colors.black54,
-                      height: 1.6,
-                    ),
+                    style: const TextStyle(fontSize: 15, color: Colors.black54, height: 1.6),
                   ),
                 ],
               ),

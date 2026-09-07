@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/di/injection.dart';
+import '../../core/services/secure_storage_service.dart';
 import '../../core/services/storage_service.dart';
 import 'news_screen.dart';
 
@@ -15,8 +16,8 @@ class _AuthScreenState extends State<AuthScreen> {
   final _passwordController = TextEditingController();
 
   void _login() async {
-    if (_emailController.text.isNotEmpty &&
-        _passwordController.text.isNotEmpty) {
+    if (_emailController.text.isNotEmpty && _passwordController.text.isNotEmpty) {
+      await getIt<SecureStorageService>().saveToken('dummy_auth_token_12345');
       await getIt<StorageService>().setAuthorized(true);
 
       if (!mounted) return;
@@ -26,9 +27,9 @@ class _AuthScreenState extends State<AuthScreen> {
         MaterialPageRoute(builder: (_) => const NewsScreen()),
       );
     } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Заполните все поля')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Заполните все поля')),
+      );
     }
   }
 
@@ -63,9 +64,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50),
-              ),
+              style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50)),
               onPressed: _login,
               child: const Text('Войти', style: TextStyle(fontSize: 18)),
             ),
